@@ -1,4 +1,5 @@
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
+import express, { Request, Response } from 'express';
 import { CustomDiscordClient } from './types';
 import rateLimit from 'express-rate-limit';
 import session from 'express-session';
@@ -8,7 +9,6 @@ import { config } from './config';
 import token from './api/token';
 import mongoose from 'mongoose';
 import logger from './logger';
-import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import api from './api';
@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, './dist')));
 app.use('/api', auth, api(client));
 app.use('/auth/token', token());
 
-app.get(`/*`, function (req, res) {
+app.get(`/*`, function (req: Request, res: Response) {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
