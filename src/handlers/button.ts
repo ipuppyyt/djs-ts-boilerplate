@@ -2,7 +2,7 @@ import { ButtonInteraction, Events, MessageFlags } from "discord.js";
 import loadButtons from "../utils/loadButtons";
 import { CustomDiscordClient } from "../types";
 
-const buttons = loadButtons('../actions/button');
+const buttons = loadButtons('../actions/buttons');
 
 export default {
     name: Events.InteractionCreate,
