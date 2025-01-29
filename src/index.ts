@@ -31,8 +31,8 @@ client.commands = new Collection();
 
 // Connect to MongoDB
 mongoose.connect(config.db.uri)
-    .then((res) => logger.success('MONGODB', 'Connected'))
-    .catch((err) => logger.fail('MONGODB', err.message));
+    .then(() => logger.success('MONGO', 'Connected'))
+    .catch((err) => logger.fail('MONGO', err.message));
 
 // Set up the express app
 app.use(express.json());

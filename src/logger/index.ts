@@ -18,7 +18,7 @@ const logger = {
         console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}]`.grey, `[LOG] `.grey, message);
     },
     event: (event: string, message: string) => {
-        console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}]`.grey,`[${event}]`.cyan, message);
+        console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}]`.grey,`[${event}] `.cyan, message);
     },
     success: (from: string, message: string) => {
         console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}]`.grey, `[${from}] `.green, message);
