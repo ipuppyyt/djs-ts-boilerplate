@@ -17,7 +17,7 @@ export default {
         const apiLatency = client.ws.ping;
         const discordJSVersion = require('discord.js').version;
         const nodeVersion = process.version;
-        const version = require('../package.json').version;
+        const version = require('../../package.json').version;
         const embedcolor = parseInt('D2042D', 16);
 
         const devbtn = new ButtonBuilder()
