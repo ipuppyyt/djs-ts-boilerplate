@@ -1,6 +1,6 @@
 import { ButtonInteraction, Events, MessageFlags } from "discord.js";
-import loadButtons from "../utils/loadButtons";
 import { CustomDiscordClient } from "../types";
+import { loadButtons } from "../utils";
 
 const buttons = loadButtons('../actions/buttons');
 
