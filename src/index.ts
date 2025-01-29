@@ -1,5 +1,6 @@
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import { CustomDiscordClient } from './types';
+import rateLimit from 'express-rate-limit';
 import session from 'express-session';
 import { auth } from './middlewares';
 import bodyParser from 'body-parser';
@@ -34,6 +35,14 @@ mongoose.connect(config.db.uri)
     .then(() => logger.success('MONGO', 'Connected'))
     .catch((err) => logger.fail('MONGO', err.message));
 
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 15 minutes window
+    max: 50, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests, please try again later.', 
+    headers: true, // Send custom headers
+    statusCode: 429 // Status code
+});
+
 // Set up the express app
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -41,13 +50,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: config.client.secret, resave: false, saveUninitialized: true, cookie: { secure: true } }));
+app.use(limiter);
 app.use(express.static(path.join(__dirname, './dist')));
 
 app.use('/api', auth, api(client));
 app.use('/auth/token', token());
 
 app.get(`/*`, function (req, res) {
-    res.sendFile(path.join(__dirname, './dist/index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 // Load commands
