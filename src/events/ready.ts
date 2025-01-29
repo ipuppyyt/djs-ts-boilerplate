@@ -10,7 +10,7 @@ export const ready = {
     once: true,
     async execute(client: CustomDiscordClient) {
         logger.info(`Logged in as ${client.user?.tag}`);
-        logger.info('Refreshing slash (/) commands');
+        logger.info(`Refreshing commands...`);
         const rest = new REST({ version: '10' }).setToken(config.token);
 
         const commandsPath = join(__dirname, '../commands');
