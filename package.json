@@ -1,11 +1,11 @@
 {
   "name": "djs-ts-boilerplate",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
