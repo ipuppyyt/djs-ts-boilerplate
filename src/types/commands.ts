@@ -4,5 +4,5 @@ import { CustomDiscordClient } from "./client";
 export interface SlashCommandType {
     data: any;
     global?: boolean;
-    execute(interaction: CommandInteraction, client: CustomDiscordClient): Promise<void>;
+    execute(interaction: CommandInteraction, client: CustomDiscordClient, ...args: any): Promise<void>;
 }
