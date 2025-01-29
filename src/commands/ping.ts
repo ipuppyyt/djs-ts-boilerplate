@@ -1,5 +1,5 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, CommandInteraction, EmbedBuilder, MessageActionRowComponentBuilder, SlashCommandBuilder } from "discord.js";
-import { CustomDiscordClient, SlashCommandType } from "../types";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageActionRowComponentBuilder, SlashCommandBuilder } from "discord.js";
+import { SlashCommandType } from "../types";
 import formatUptime from "../utils/formatUptime";
 import logger from "../logger";
 
@@ -8,7 +8,7 @@ export default {
         .setName('ping')
         .setDescription('Replies with bot stats'),
     global: true,
-    async execute(interaction: CommandInteraction, client: CustomDiscordClient) {
+    async execute(interaction, client) {
         const ping = client.ws.ping;
         const uptime = formatUptime(client.uptime as number);
         const memoryUsage = process.memoryUsage().heapUsed / 1024 / 1024;
