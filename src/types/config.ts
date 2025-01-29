@@ -9,6 +9,8 @@ export interface Config {
         uri: string;
         options: {};
     };
+    owner: string;
+    developers: string[];
     activity: {
         type: 'online' | 'idle' | 'dnd' | 'invisible';
         message: string;
