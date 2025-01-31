@@ -63,7 +63,10 @@ app.get(`/*`, function (req: Request, res: Response) {
 // Load commands
 const commandsPath = path.join(__dirname, 'commands');
 if (!fs.existsSync(commandsPath)) fs.mkdirSync(commandsPath);
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'));
+const commandFiles = fs.readdirSync(commandsPath).filter((file)=> {
+	if(file.endsWith('.ts') || file.endsWith('.js'))
+		return file
+});
 for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const commandModule = require(filePath);
@@ -76,7 +79,10 @@ for (const file of commandFiles) {
 // Load events
 const eventsPath = path.join(__dirname, 'events');
 if (!fs.existsSync(eventsPath)) fs.mkdirSync(eventsPath);
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.ts'));
+const eventFiles = fs.readdirSync(eventsPath).filter((file)=> {
+	if(file.endsWith('.ts') || file.endsWith('.js'))
+		return file
+});
 for (const file of eventFiles) {
     const filePath = path.join(eventsPath, file);
     const eventModule = require(filePath);
@@ -88,7 +94,10 @@ for (const file of eventFiles) {
 // Load handlers
 const handlersPath = path.join(__dirname, 'handlers');
 if (!fs.existsSync(handlersPath)) fs.mkdirSync(handlersPath);
-const handlerFiles = fs.readdirSync(handlersPath).filter(file => file.endsWith('.ts'));
+const handlerFiles = fs.readdirSync(handlersPath).filter((file)=> {
+	if(file.endsWith('.ts') || file.endsWith('.js'))
+		return file;
+});
 for (const file of handlerFiles) {
     const filePath = path.join(handlersPath, file);
     const handlerModule = require(filePath);
