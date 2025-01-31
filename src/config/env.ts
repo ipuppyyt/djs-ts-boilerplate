@@ -7,6 +7,7 @@ const envSchema = z.object({
     CLIENT_ID: z.string().min(1, "CLIENT_ID is required"),
     CLIENT_SECRET: z.string().min(1, "CLIENT_ID is required"),
     MONGODB_URI: z.string().min(1, "MONGODB_URI is required"),
+    OWNER_ID: z.string().min(1, "OWNER_ID is required"),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
