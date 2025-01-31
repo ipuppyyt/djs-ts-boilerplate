@@ -14,7 +14,7 @@ const config: Config = {
         uri: env.MONGODB_URI,
         options: {}
     },
-    owner: '805771996687499275',
+    owner: env.OWNER_ID,
     developers: [],
     activity: {
         type: 'online',
