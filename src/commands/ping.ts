@@ -20,12 +20,19 @@ export default {
         const version = require('../../package.json').version;
         const embedcolor = parseInt('D2042D', 16);
 
-        const devbtn = new ButtonBuilder()
-            .setLabel('Developer')
+        const devbtn1 = new ButtonBuilder()
+            .setLabel('Dev 1')
             .setStyle(ButtonStyle.Link)
-            .setURL('https://github.com/ipuppyyt')
+            .setURL('https://github.com/ipuppyyt');
 
-        const btnrow = new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(devbtn);
+        const devbtn2 = new ButtonBuilder()
+            .setLabel('Dev 2')
+            .setStyle(ButtonStyle.Link)
+            .setURL('https://github.com/muhamedfazeel')
+
+        const btnrow = new ActionRowBuilder<MessageActionRowComponentBuilder>()
+            .addComponents(devbtn1)
+            .addComponents(devbtn2);
 
         const pingembed = new EmbedBuilder()
             .setColor(embedcolor)
